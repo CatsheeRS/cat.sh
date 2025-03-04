@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <title>cat.sh</title>
+</head>
+<body>
+
+  <img src="Assets/CatSHArt.png" class="centred" alt="Cat Art">
+  <div class="elementCentred"><h2>some funny tools for some funny things</h2></div>
+
+  <div class="box-container">
+    <div class="box">
+        <h3>Encoder</h3>
+        <input type="text" id="Encoder" name="Encoder" size="20">
+        <button class="btn" id="encodeButton" onclick="EncodeText()">Encode</button>
+      </div>
+      
+      <div class="box">
+        <h3>Decoder</h3>
+        <input type="text" id="Decoder" name="Decoder" size="20">
+        <button class="btn" id="decodeButton" onclick="DecodeText()">Decode</button>
+      </div>
+      
+      <script>
+        function EncodeText() {
+            var txt = document.getElementById("Encoder").value;
+      
+            const encoder = new TextEncoder();
+            const view = encoder.encode(txt);
+      
+            document.getElementById("Encoder").value = Array.from(view).join(",");
+        }
+      
+        function DecodeText() {
+            var txt = document.getElementById("Decoder").value;
+      
+            const uint8Array = new Uint8Array(txt.split(",").map(Number));
+            const decoder = new TextDecoder();
+            const decodedText = decoder.decode(uint8Array);
+      
+            document.getElementById("Decoder").value = decodedText;
+        }
+      </script>      
+
+    <!-- Next Row: Left Box -->
+    <!-- <div class="box">
+      <h3>Third Box</h3>
+      <p>More funny things go here.</p>
+      <button class="btn">Try It</button>
+    </div> -->
+
+    <!-- Next Row: Right Box -->
+    <!-- <div class="box">
+      <h3>Fourth Box</h3>
+      <p>Yet another playful thing.</p>
+      <button class="btn">Go!</button>
+    </div> -->
+  </div>
+
+</body>
+</html>
